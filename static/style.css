@@ -12,19 +12,7 @@ h1 {
     border-radius: 5px;
 }
 
-.start-quiz-button {
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-}
 
 .button-container {
     text-align: center;
-}
-
-.main-header {
-    font-size: 40;
 }
