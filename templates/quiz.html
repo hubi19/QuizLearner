@@ -23,7 +23,6 @@
         .start-quiz-button {
             align-items: center;
             padding: 10px 20px;
-            background-color: #4CAF50;
             color: white;
             text-decoration: none;
             border-radius: 5px;
@@ -33,10 +32,9 @@
 </head>
 <body>
     <h1 class="display-3">Quiz</h1>
-    <a href="/" class="buttons">Wróć</a>
-
+    <a href="/" class="buttons btn btn-warning">Wróć</a>
 {% block content %}
-  <h2>Quiz</h2>
+  <h2 class="display-6 text-small">Quiz</h2>
   <form method="post" action="{{ url_for('quiz') }}">
     {{ form.hidden_tag() }}
     <fieldset>
@@ -46,7 +44,7 @@
         {{ answer.content }}<br>
       {% endfor %}
     </fieldset>
-    <button type="submit">Submit</button>
+    <button type="submit btn btn-warning">Submit</button>
   </form>
 {% endblock %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

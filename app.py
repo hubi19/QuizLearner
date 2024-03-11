@@ -19,7 +19,7 @@ login_menager = LoginManager(app)
 login_menager.login_view = 'login'
 
 from models import create_model
-Question, Answer =  create_model(db)
+Question, Answer, QuizForm =  create_model(db)
 
 
 class User(UserMixin, db.Model):
