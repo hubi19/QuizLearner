@@ -4,27 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
-        body {
-            background-color: #dbd9d9;
-        }
-        h1 {
-            padding: 1.5%;
-        }
-        .buttons {
-            margin: 1.5%;
-            margin-bottom: 0%;
-            align-content: center;
-            align-items: center;
-            align-self: center;
-        }
-        .text-small {
-            text-align: center;
-            padding: 5%;
-        }
-        .start-quiz-button {
+        .back-button {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -36,9 +19,9 @@
     </style>
     <title>About</title>
 </head>
-<body>
+<body class="body-background">
     <h1 class="display-3">O nas</h1>
-    <a href="/" class="start-quiz-button btn btn-warning">Wróć</a>
+    <a href="/" class="back-button btn btn-warning">Wróć</a>
     <h3 class="display-6 text-small">Tutaj kiedyś będą informacje o wszysktim</h3>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
