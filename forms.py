@@ -13,3 +13,5 @@ class RegistrationForm(FlaskForm):
     confirm_password = PasswordField('Powtórz hasło', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Zarejestruj')
     
+class LogoutForm(FlaskForm):
+    submit = SubmitField('Wyloguj')

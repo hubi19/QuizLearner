@@ -7,7 +7,7 @@ from wtforms.validators import DataRequired, Email
 from wtforms import StringField, PasswordField, SubmitField
 
 from quiz_form import QuizForm
-
+from forms import LogoutForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'ROMH85C34XRGOXJ9OM7OBDV3CZLI41R3'
@@ -38,7 +38,12 @@ def load_user(user_id):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    form = LogoutForm()
+    if current_user.is_authenticated:
+        user_email = current_user.email
+    else:
+        user_email = None
+    return render_template('index.html', user_email=user_email, form=form)
 
 
 def get_next_question():
@@ -95,6 +100,11 @@ def login():
             flash("Nieprawidłowe dane logowania")
     return render_template('login.html', form=form)
 
+@app.route('/logout', methods=['GET', 'POST'])
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = YourForm()
@@ -109,6 +119,10 @@ def register():
             db.session.commit()
             flash("Poprawnie zarejestrowano!")
     return render_template('register.html', form=form)
+
+@app.route('/questions')
+def questions():
+    return render_template('questions.html')
 
 if __name__ == '__main__':
     with app.app_context():
