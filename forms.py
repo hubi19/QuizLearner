@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, FieldList, FormField
 from wtforms.validators import DataRequired, Email, EqualTo
 
 class LoginForm(FlaskForm):
@@ -15,3 +15,12 @@ class RegistrationForm(FlaskForm):
     
 class LogoutForm(FlaskForm):
     submit = SubmitField('Wyloguj')
+
+class AnswerForm(FlaskForm):
+    answer = StringField('Odpowiedź', validators=[DataRequired()])
+
+class QuestionForm(FlaskForm):
+    question_content = StringField('Treść pytania', validators=[DataRequired()])
+    answers = FieldList(FormField(AnswerForm), min_entries=4, max_entries=4)
+    submit = SubmitField('Dodaj pytanie')
+

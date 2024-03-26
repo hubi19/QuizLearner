@@ -40,7 +40,44 @@
 <body>
     <h1 class="display-3">Dodaj pytania do quizu</h1>
     <a href="/" class="start-quiz-button btn btn-warning">Wróć</a>
+    <form method="post">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.question_content.label }}<br>
+            {{ form.question_content() }}
+        </div>
+        <div id="answers">
+            <div class="form-group">
+                {% for answer in form.answers %}
+                    {{ answer.label }} {{ answer() }}
+                {% endfor %}
+            </div>
+        </div>
+        <button type="button" id="add_question" class="btn btn-primary">Dodaj pytanie</button>
+        <button type="submit" class="btn btn-success">Zapisz pytania</button>
+    </form>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  </body>
+    <script>
+        // Obsługa przycisku dodawania nowego pytania i odpowiedzi
+        document.getElementById('add_question').addEventListener('click', function() {
+            var answersContainer = document.getElementById('answers');
+            var questionIndex = answersContainer.children.length / 5; // 5 to liczba pól dla pojedynczego pytania i odpowiedzi
+            var newQuestionDiv = document.createElement('div');
+            newQuestionDiv.className = 'form-group';
+            newQuestionDiv.innerHTML = '<label for="question_' + questionIndex + '">Pytanie ' + questionIndex + '</label>' +
+                                        '<input type="text" id="question_' + questionIndex + '" name="question_' + questionIndex + '" class="form-control">' +
+                                        '<label for="answer_' + questionIndex + '_1">Odpowiedź 1</label>' +
+                                        '<input type="text" id="answer_' + questionIndex + '_1" name="answer_' + questionIndex + '_1" class="form-control">' +
+                                        '<label for="answer_' + questionIndex + '_2">Odpowiedź 2</label>' +
+                                        '<input type="text" id="answer_' + questionIndex + '_2" name="answer_' + questionIndex + '_2" class="form-control">' +
+                                        '<label for="answer_' + questionIndex + '_3">Odpowiedź 3</label>' +
+                                        '<input type="text" id="answer_' + questionIndex + '_3" name="answer_' + questionIndex + '_3" class="form-control">' +
+                                        '<label for="answer_' + questionIndex + '_4">Odpowiedź 4</label>' +
+                                        '<input type="text" id="answer_' + questionIndex + '_4" name="answer_' + questionIndex + '_4" class="form-control">';
+            answersContainer.appendChild(newQuestionDiv);
+        });
+    </script>
+</body>
 </body>
 </html>

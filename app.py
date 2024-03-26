@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from wtforms.validators import DataRequired, Email
 from wtforms import StringField, PasswordField, SubmitField
+from forms import QuestionForm
 
 from quiz_form import QuizForm
 from forms import LogoutForm
@@ -120,9 +121,12 @@ def register():
             flash("Poprawnie zarejestrowano!")
     return render_template('register.html', form=form)
 
-@app.route('/questions')
+@app.route('/questions', methods=['GET', 'POST'])
 def questions():
-    return render_template('questions.html')
+    form = QuestionForm()
+    if form.validate_on_submit():
+        pass
+    return render_template('questions.html', form=form)
 
 if __name__ == '__main__':
     with app.app_context():
